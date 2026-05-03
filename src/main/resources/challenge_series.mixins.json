@@ -3,12 +3,18 @@
 	"package": "org.mythic_goose.challenge_series.mixin",
 	"compatibilityLevel": "JAVA_25",
 	"mixins": [
-
+		"CreativeModeTabMixin",
+		"accessor.CreativeModeTabAccessor"
 	],
 	"injectors": {
 		"defaultRequire": 1
 	},
 	"overwrites": {
 		"requireAnnotations": true
-	}
+	},
+	"client": [
+		"CreativeModeInventoryScreenMixin",
+		"ItemPickerMenuMixin",
+		"accessor.CreativeModeInventoryScreenAccessor"
+	]
 }
