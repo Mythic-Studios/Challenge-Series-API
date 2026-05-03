@@ -66,16 +66,23 @@ jar {
 // configure the maven publication
 publishing {
 	publications {
-		create("mavenJava", MavenPublication) {
+		mavenJava(MavenPublication) {
+			groupId = 'com.mythic-studios'
+			artifactId = 'challenge-series-api'
+			version = '1.0-26.1.2' // bump this each release
+
 			from components.java
 		}
 	}
 
-	// See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
 	repositories {
-		// Add repositories to publish to here.
-		// Notice: This block does NOT have the same function as the block in the top level.
-		// The repositories here will be used for publishing your artifact, not for
-		// retrieving dependencies.
+		maven {
+			name = "GitHubPackages"
+			url = uri("https://maven.pkg.github.com/Mythic-Studios/Challenge-Series-API")
+			credentials {
+				username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
+				password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+			}
+		}
 	}
 }
