@@ -3,9 +3,9 @@
 	"id": "challenge_series",
 	"version": "${version}",
 	"name": "Challenge Series API",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "This Mod is a global api for my Challenge Series Mods",
 	"authors": [
-		"Me!"
+		"Mythic Goose Studios"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
@@ -17,6 +17,9 @@
 	"entrypoints": {
 		"main": [
 			"org.mythic_goose.challenge_series.ChallengeSeriesAPI"
+		],
+		"client": [
+			"org.mythic_goose.challenge_series.ChallengeSeriesAPIClient"
 		],
 		"fabric-datagen": [
 			"org.mythic_goose.challenge_series.ChallengeSeriesAPIDataGenerator"
