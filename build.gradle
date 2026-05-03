@@ -69,7 +69,7 @@ publishing {
 		mavenJava(MavenPublication) {
 			groupId = 'com.mythic-studios'
 			artifactId = 'challenge-series-api'
-			version = '1.0.1-26.1.2' // bump this each release
+			version = '1.0.2+26.1.2' // bump this each release
 
 			from components.java
 		}
