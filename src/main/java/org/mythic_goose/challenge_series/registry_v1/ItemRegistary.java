@@ -1,10 +1,12 @@
 package org.mythic_goose.challenge_series.registry_v1;
 
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
@@ -53,8 +55,13 @@ public abstract class ItemRegistary {
      * @param factory   supplier that constructs the item
      * @return the registered item instance
      */
-    protected static Item register(String namespace, String path, Supplier<Item> factory) {
-        return ModRegistry.register(BuiltInRegistries.ITEM, namespace, path, factory.get());
+    protected static Item register(String namespace, String path, Function<Item.Properties, Item> factory) {
+        var key = net.minecraft.resources.ResourceKey.create(
+                net.minecraft.core.registries.Registries.ITEM,
+                Identifier.fromNamespaceAndPath(namespace, path)
+        );
+        Item item = factory.apply(new Item.Properties().setId(key));
+        return ModRegistry.register(BuiltInRegistries.ITEM, namespace, path, item);
     }
 
     /**
@@ -69,10 +76,14 @@ public abstract class ItemRegistary {
      * @return the registered BlockItem instance
      */
     protected static Item registerBlockItem(String namespace, String path, Block block) {
+        var key = net.minecraft.resources.ResourceKey.create(
+                net.minecraft.core.registries.Registries.ITEM,
+                Identifier.fromNamespaceAndPath(namespace, path)
+        );
         return ModRegistry.register(
                 BuiltInRegistries.ITEM,
                 namespace, path,
-                new BlockItem(block, new Item.Properties())
+                new BlockItem(block, new Item.Properties().setId(key))
         );
     }
 }
