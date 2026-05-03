@@ -12,6 +12,5 @@ public class ChallengeSeriesAPI implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		ModCreativeTabs.init();
 	}
 }
