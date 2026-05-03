@@ -20,10 +20,10 @@ public class ModCreativeTabs {
         TabLayout.build(sections); // populates CACHED_ITEMS and SECTION_ROW
 
         CORE = Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB,
-                Identifier.fromNamespaceAndPath(ChallengeSeriesAPI.MOD_ID, "challenge_series_api"),  // must change to YOUR id
+                Identifier.fromNamespaceAndPath(ChallengeSeriesAPI.MOD_ID, "challenge_series_api"),
                 FabricCreativeModeTab.builder()
                         .icon(() -> new ItemStack(Items.DIAMOND)) // change item icon to what ever
-                        .title(Component.translatable("itemGroup.mod_id.challenge_series_api"))
+                        .title(Component.translatable("itemGroup.challenge_series_api"))
                         .displayItems((params, output) -> {
 
                             // Intentionally empty — CreativeModeTabMixin overrides buildContents
