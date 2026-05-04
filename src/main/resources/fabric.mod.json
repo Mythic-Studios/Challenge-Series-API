@@ -20,9 +20,6 @@
 		],
 		"client": [
 			"org.mythic_goose.challenge_series.ChallengeSeriesAPIClient"
-		],
-		"fabric-datagen": [
-			"org.mythic_goose.challenge_series.ChallengeSeriesAPIDataGenerator"
 		]
 	},
 	"mixins": [
