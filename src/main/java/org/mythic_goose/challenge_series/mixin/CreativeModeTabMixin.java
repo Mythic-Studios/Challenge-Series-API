@@ -5,6 +5,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import org.mythic_goose.challenge_series.creative_tab_v1.ModCreativeTabs;
+import org.mythic_goose.challenge_series.creative_tab_v1.ModSections;
 import org.mythic_goose.challenge_series.creative_tab_v1.TabLayout;
 import org.mythic_goose.challenge_series.mixin.accessor.CreativeModeTabAccessor;
 import org.spongepowered.asm.mixin.Mixin;
@@ -23,7 +24,12 @@ public class CreativeModeTabMixin {
             return;
         }
 
-        List<ItemStack> display = TabLayout.buildStacks();
+        ModSections.build();                                    // lock + populate ALL (idempotent)
+        List<ItemStack> display = TabLayout.build(ModSections.ALL) // rebuild layout
+                .stream()
+                .map(item -> item == null ? ItemStack.EMPTY : new ItemStack(item))
+                .toList();
+
         ((CreativeModeTabAccessor) self).setDisplayItems(display);
         ((CreativeModeTabAccessor) self).setDisplayItemsSearchTab(
                 display.stream()
