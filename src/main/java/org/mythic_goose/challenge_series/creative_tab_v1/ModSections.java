@@ -52,10 +52,6 @@ public final class ModSections {
         REGISTRY.add(section);
     }
 
-    /**
-     * Called internally by the tab mixin on first build.
-     * Safe to call multiple times — freezes only once.
-     */
     public static List<Section> build() {
         if (!locked) {
             ALL = Collections.unmodifiableList(new ArrayList<>(REGISTRY));

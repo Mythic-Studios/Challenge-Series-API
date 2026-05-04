@@ -16,9 +16,6 @@ public class ModCreativeTabs {
     public static CreativeModeTab CORE;
 
     public static void init() {
-        List<Section> sections = ModSections.build();
-        TabLayout.build(sections); // populates CACHED_ITEMS and SECTION_ROW
-
         CORE = Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB,
                 Identifier.fromNamespaceAndPath(ChallengeSeriesAPI.MOD_ID, "challenge_series_api"),
                 FabricCreativeModeTab.builder()
